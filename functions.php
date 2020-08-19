@@ -24,3 +24,21 @@ function showAllData () {
         echo "<option value='$id'>$id</option>";
     }
 }
+
+function updateTable() {
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST['id'];
+
+    $query = "UPDATE users SET ";  // Note: if you don't put a space after SET, you will get an error
+    $query .= "username = '$username', ";
+    $query .= "password = '$password' ";
+    $query .= "WHERE id = $id ";  // don't put quotes around $id because it's an integer
+
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        die("query failed " . mysqli_error($connection));
+    }
+
+}
