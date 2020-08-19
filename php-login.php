@@ -1,3 +1,19 @@
+<?php
+
+// isset checks if the form was submitted
+if(isset($_POST['submit'])) {
+
+    // assigning the form names into variables
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    echo $username;
+    echo ", ";
+    echo $password;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
