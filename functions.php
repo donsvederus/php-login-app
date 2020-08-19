@@ -37,6 +37,23 @@ function updateTable() {
     $query .= "WHERE id = $id ";  // don't put quotes around $id because it's an integer
 
     $result = mysqli_query($connection, $query);
+    // this tests the query
+    if(!$result) {
+        die("query failed " . mysqli_error($connection));
+    }
+
+}
+
+function deleteRows() {
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST['id'];
+
+    $query = "DELETE FROM users ";  // Note: space
+    $query .= "WHERE id = $id ";
+
+    $result = mysqli_query($connection, $query);
     if(!$result) {
         die("query failed " . mysqli_error($connection));
     }
