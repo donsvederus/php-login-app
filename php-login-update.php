@@ -1,21 +1,5 @@
-<?php
-
-include "db.php";
-
-// selects the data from the db
-$query = "SELECT * FROM users";  // the * means all
-$result = mysqli_query($connection, $query);
-
-
-// use a prebuilt function,  created a variable for checking
-$result = mysqli_query($connection, $query);
-
-// checks and kills the process if things dont work out
-if(!$result) {
-    die('Query FAILED' . mysqli_error());
-}
-
-?>
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +30,9 @@ if(!$result) {
 
             <div class="form-group">
             
-                <select name="" id="" class="">
-                
-                    <option value="" class="">1</option>
+                <select name="id" id="" class="">
+
+                <?php showAllData(); ?>
                 
                 </select>
             
