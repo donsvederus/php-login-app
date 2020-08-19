@@ -3,13 +3,17 @@
 // isset checks if the form was submitted
 if(isset($_POST['submit'])) {
 
-    // assigning the form names into variables
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// assigning the form names into variables
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-    echo $username;
-    echo ", ";
-    echo $password;
+// This connects to the database, Note: create a database with ID, username, password
+$connection = mysqli_connect('localhost', 'root', '', 'loginapp');
+    if(!$connection) {
+        die("Database connection failed");
+    } else {
+        echo "connected to database";
+    }
 }
 
 ?>
