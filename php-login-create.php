@@ -2,20 +2,9 @@
 <?php include "functions.php"; ?>
 <?php createRows(); ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dons PHP Login App Example</title>
-    <!-- Added Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-</head>
-<body>
-<div class="container">
+<?php include "includes/header.php" ?>
 
-    <div class="col-xs-6">
-        <h1 class="text-center">Create</h1
+        <h1 class="text-center">Create</h1>
         <!-- Login Form Start -->
         <form action="php-login-create.php" method="post">
         
@@ -34,8 +23,4 @@
         </form>
         <!-- Login Form End -->
 
-    </div>
-
-</div>   
-</body>
-</html>
+<?php include "includes/footer.php" ?>
