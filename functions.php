@@ -13,6 +13,11 @@ function createRows() {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        // help preventsSQL Injections and assigns it back to the variable
+        // the function allows for adding ' special characters
+        $username = mysqli_real_escape_string($connection, $username);
+        $password = mysqli_real_escape_string($connection, $password);
+
         // this inserts the data into the database, and we assign to a variable, so we can check it
         $query = "INSERT INTO users(username, password) ";  // these are the columns for the db
         $query .= "VALUES ('$username', '$password')"; // the .= concatenate to the previous line
@@ -83,6 +88,10 @@ function updateTable() {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $id = $_POST['id'];
+
+        //allows for special characters and prevents sql injections
+        $username = mysqli_real_escape_string($connection, $username);
+        $password = mysqli_real_escape_string($connection, $password);
 
         $query = "UPDATE users SET ";  // Note: if you don't put a space after SET, you will get an error
         $query .= "username = '$username', ";
