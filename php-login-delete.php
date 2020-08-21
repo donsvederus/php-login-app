@@ -1,11 +1,6 @@
 <?php include "db.php"; ?>
 <?php include "functions.php"; ?>
-
-<?php
-if(isset($_POST['submit'])) {
-deleteRows();
-}
-?>
+<?php deleteRows(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +15,7 @@ deleteRows();
 <div class="container">
 
     <div class="col-xs-6">
-
+        <h1 class="text-center">Delete</h1>
         <!-- Login Form Start -->
         <form action="php-login-delete.php" method="post">
         

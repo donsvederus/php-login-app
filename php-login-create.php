@@ -1,29 +1,6 @@
-<?php
-
-include "db.php";
-
-// isset checks if the form was submitted
-if(isset($_POST['submit'])) {
-
-    // assigning the form names into variables
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // this inserts the data into the database, and we assign to a variable, so we can check it
-    $query = "INSERT INTO users(username, password) ";  // these are the columns for the db
-    $query .= "VALUES ('$username', '$password')"; // the .= concatenate to the previous line
-
-    // use a prebuilt function,  created a variable for checking
-    $result = mysqli_query($connection, $query);
-
-    // checks and kills the process if things dont work out
-    if(!$result) {
-        die('Query FAILED' . mysqli_error());
-    } else {
-        echo "Data submitted";
-    }
-}
-?>
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
+<?php createRows(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +15,7 @@ if(isset($_POST['submit'])) {
 <div class="container">
 
     <div class="col-xs-6">
-
+        <h1 class="text-center">Create</h1
         <!-- Login Form Start -->
         <form action="php-login-create.php" method="post">
         

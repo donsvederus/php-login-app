@@ -1,6 +1,38 @@
 <?php include "db.php"; // include the db ?> 
 <?php
 
+function createRows() {
+
+    
+    
+
+    // isset checks if the form was submitted
+    if(isset($_POST['submit'])) {
+        
+        // make sure the connection is global, global brings in variables, functions are local
+        global $connection;
+
+        // assigning the form names into variables
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        // this inserts the data into the database, and we assign to a variable, so we can check it
+        $query = "INSERT INTO users(username, password) ";  // these are the columns for the db
+        $query .= "VALUES ('$username', '$password')"; // the .= concatenate to the previous line
+
+        // use a prebuilt function,  created a variable for checking
+        $result = mysqli_query($connection, $query);
+
+        // checks and kills the process if things dont work out
+        if(!$result) {
+            die('Query FAILED' . mysqli_error());
+        } else {
+            echo "Record Created";
+        }
+    }
+
+}
+
 function showAllData () {
     
     // make sure the connection is global, global brings in variables, functions are local
@@ -26,36 +58,47 @@ function showAllData () {
 }
 
 function updateTable() {
-    global $connection;
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $id = $_POST['id'];
+    
+    if(isset($_POST['submit'])) {
 
-    $query = "UPDATE users SET ";  // Note: if you don't put a space after SET, you will get an error
-    $query .= "username = '$username', ";
-    $query .= "password = '$password' ";
-    $query .= "WHERE id = $id ";  // don't put quotes around $id because it's an integer
+        global $connection;
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $id = $_POST['id'];
 
-    $result = mysqli_query($connection, $query);
-    // this tests the query
-    if(!$result) {
-        die("query failed " . mysqli_error($connection));
-    }
+        $query = "UPDATE users SET ";  // Note: if you don't put a space after SET, you will get an error
+        $query .= "username = '$username', ";
+        $query .= "password = '$password' ";
+        $query .= "WHERE id = $id ";  // don't put quotes around $id because it's an integer
+
+        $result = mysqli_query($connection, $query);
+        // this tests the query
+        if(!$result) {
+            die("query failed " . mysqli_error($connection));
+        } else {
+                echo "Record Updated";
+        }
+    }   
 
 }
 
 function deleteRows() {
-    global $connection;
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $id = $_POST['id'];
 
-    $query = "DELETE FROM users ";  // Note: space
-    $query .= "WHERE id = $id ";
+    if(isset($_POST['submit'])) {
+        global $connection;
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $id = $_POST['id'];
 
-    $result = mysqli_query($connection, $query);
-    if(!$result) {
-        die("query failed " . mysqli_error($connection));
+        $query = "DELETE FROM users ";  // Note: space
+        $query .= "WHERE id = $id ";
+
+        $result = mysqli_query($connection, $query);
+        if(!$result) {
+            die("query failed " . mysqli_error($connection));
+        } 
+        else {
+            echo "Record Deleted";
+        }
     }
-
 }
